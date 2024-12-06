@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - npm install -g aws-cdk    # Install the AWS CDK globally
+      - npm install                # Install the necessary dependencies (from package.json)
+  build:
+    commands:
+      - cdk synth                  # Synthesize the CloudFormation template from your CDK code
+      - cdk deploy --require-approval never   # Deploy the stack automatically without approval
+artifacts:
+  files:
+    - '**/*'                       # Include all files in the artifact output (necessary for deployment)
